@@ -16,15 +16,16 @@ public static class Program
 
 
             
-            Console.WriteLine("Press 1 to run Challenge 1");
-            Console.WriteLine("Press 2 to run Challenge 2");
-            Console.WriteLine("Press 3 to run Challenge 3");
-            Console.WriteLine("Press 4 to run Challenge 4");
-            Console.WriteLine("Press 5 to run Challenge 5");
-            Console.WriteLine("Press 6 to run Challenge 6");
-            Console.WriteLine("Press 7 to run Challenge 7");
-            Console.WriteLine("Press 8 to run Challenge 8");
-            Console.WriteLine("Press enter to exit");
+            Console.WriteLine("Enter 1 to run Challenge 1");
+            Console.WriteLine("Enter 2 to run Challenge 2");
+            Console.WriteLine("Enter 3 to run Challenge 3");
+            Console.WriteLine("Enter 4 to run Challenge 4");
+            Console.WriteLine("Enter 5 to run Challenge 5");
+            Console.WriteLine("Enter 6 to run Challenge 6");
+            Console.WriteLine("Enter 7 to run Challenge 7");
+            Console.WriteLine("Enter 8 to run Challenge 8");
+            Console.WriteLine("Enter 9 to run Challenge 9");
+            Console.WriteLine("Enter 10 to exit");
             int action = Convert.ToInt32(Console.ReadLine());
 
             if (action == 1)
@@ -69,6 +70,23 @@ public static class Program
             {
                 Challenge_8();
                 Console.ReadLine();
+            }
+            else if (action == 9)
+            {
+                string[][] result = Challenge_9();
+
+                foreach (string[] wordWithCount in result)
+                {
+                    string word = wordWithCount[0];
+                    string characterCount = wordWithCount[1];
+
+                    Console.WriteLine($"Word: {word}, Character Count: {characterCount}");
+                }
+                Console.WriteLine(" ");
+            }
+            else if(action == 10)
+            {
+                play = 1;
             }
 
         } while (play == 0);
@@ -490,6 +508,26 @@ public static class Program
 
 
     }
+
+    public static string[][] Challenge_9()
+    {
+        Console.Write("Enter a sentence: ");
+        string? sentence = Console.ReadLine();
+
+        string[] words = sentence.Split(' ');
+
+        string[][] wordsWithCount = new string[words.Length][];
+        for (int i = 0; i < words.Length; i++)
+        {
+            string word = words[i];
+            int characterCount = word.Length;
+
+            wordsWithCount[i] = new string[] { word, characterCount.ToString() };
+        }
+
+        return wordsWithCount;
+    }
+
 
 
 }
