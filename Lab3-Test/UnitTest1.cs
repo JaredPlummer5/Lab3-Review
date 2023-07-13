@@ -61,5 +61,61 @@ public class UnitTest1
         int highestNumFromFunction = Program.Challenge_5_Test(numbers);
         Assert.Equal(highestNum, highestNumFromFunction);
     }
+
+
+    [Fact]
+    public void GetWordsWithCharacterCount_ReturnsCorrectArray()
+    {
+        // Arrange
+        string inputSentence = "The quick brown fox";
+        string[][] expectedOutput = new string[][]
+        {
+                new string[] { "The", "3" },
+                new string[] { "quick", "5" },
+                new string[] { "brown", "5" },
+                new string[] { "fox", "3" }
+        };
+
+        // Act
+        string[][] result = Program.GetWordsWithCharacterCount(inputSentence);
+
+        // Assert
+        Assert.Equal(expectedOutput, result);
+    }
+
+    [Fact]
+    public void GetWordsWithCharacterCount_ReturnsArray()
+    {
+        // Arrange
+        string inputSentence = "This is a test";
+
+        // Act
+        string[][] result = Program.GetWordsWithCharacterCount(inputSentence);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<string[][]>(result);
+    }
+
+    [Fact]
+    public void GetWordsWithCharacterCount_UsesDifferentSentencesWithSymbols()
+    {
+        // Arrange
+        string inputSentence = "Hello! How's it going?";
+        string[][] expectedOutput = new string[][]
+        {
+                new string[] { "Hello!", "6" },
+                new string[] { "How's", "5" },
+                new string[] { "it", "2" },
+                new string[] { "going?", "6" }
+        };
+
+        // Act
+        string[][] result = Program.GetWordsWithCharacterCount(inputSentence);
+
+        // Assert
+        Assert.Equal(expectedOutput, result);
+    }
 }
+
 
