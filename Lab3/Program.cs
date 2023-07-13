@@ -2,6 +2,7 @@
 using System.Text;
 using System.IO;
 
+
 namespace Lab3;
 
 public static class Program
@@ -528,6 +529,87 @@ public static class Program
         return wordsWithCount;
     }
 
+    public static string[][] GetWordsWithCharacterCount()
+    {
+        Console.Write("Enter a sentence: ");
+        string sentence = Console.ReadLine();
+
+        string[] words = sentence.Split(' ');
+
+        string[][] wordsWithCount = new string[words.Length][];
+        for (int i = 0; i < words.Length; i++)
+        {
+            string word = words[i];
+            int characterCount = word.Length;
+
+            wordsWithCount[i] = new string[] { word, characterCount.ToString() };
+        }
+
+        return wordsWithCount;
+    }
+
+    public static string[][] GetWordsWithCharacterCount(string inputSentenc)
+    {
+        Console.Write("Enter a sentence: ");
+        string sentence = inputSentenc;
+
+        string[] words = sentence.Split(' ');
+
+        string[][] wordsWithCount = new string[words.Length][];
+        for (int i = 0; i < words.Length; i++)
+        {
+            string word = words[i];
+            int characterCount = word.Length;
+
+            wordsWithCount[i] = new string[] { word, characterCount.ToString() };
+        }
+
+        return wordsWithCount;
+    }
+
+    static void TestGetWordsWithCharacterCount(string inputSentence, string[][] expectedOutput)
+    {
+        string[][] result = GetWordsWithCharacterCount(inputSentence);
+
+        Console.WriteLine("Input: " + inputSentence);
+
+        if (CompareArrays(result, expectedOutput))
+        {
+            Console.WriteLine("Test Passed: Correct array returned.");
+        }
+        else
+        {
+            Console.WriteLine("Test Failed: Incorrect array returned.");
+        }
+
+        Console.WriteLine();
+    }
+
+    static bool CompareArrays(string[][] arr1, string[][] arr2)
+    {
+        if (arr1.Length != arr2.Length)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            if (arr1[i].Length != arr2[i].Length)
+            {
+                return false;
+            }
+
+            for (int j = 0; j < arr1[i].Length; j++)
+            {
+                if (arr1[i][j] != arr2[i][j])
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 
 
 }
